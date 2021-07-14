@@ -50,3 +50,23 @@ export const ProfileRelationsBoxWrapper = styled(Box)`
     }
   }
 `;
+
+export default function ProfileReations({ title, data }) {
+  return (
+    <ProfileRelationsBoxWrapper>
+      <h2 className="smallTitle">
+        {title} ({data.length})
+      </h2>
+      <ul>
+        {data.map(item => (
+          <li key={item.id || item}>
+            <a href={`/users/${item.title || item}`}>
+              <img src={item.image || `https://github.com/${item}.png`} />
+              <span>{item.title || item}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </ProfileRelationsBoxWrapper>
+  );
+}
